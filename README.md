@@ -20,7 +20,14 @@ uvicorn app.main:app --reload   # http://127.0.0.1:8000/health
 
 ## Repository layout
 
-See [CLAUDE.md](CLAUDE.md) for architecture, rules and module map, and [docs/SESSION_PROMPTS.md](docs/SESSION_PROMPTS.md) for the build sequence.
+| Doc | Purpose |
+|---|---|
+| [docs/PRD.md](docs/PRD.md) | Product requirements and success metrics |
+| [docs/TRD.md](docs/TRD.md) | Technical design and API contract |
+| [docs/EVAL_PLAN.md](docs/EVAL_PLAN.md) | Evaluation protocol |
+| [docs/WORKFLOW.md](docs/WORKFLOW.md) | Development workflow |
+| [docs/DECISIONS.md](docs/DECISIONS.md) | Decision log |
+| [CLAUDE.md](CLAUDE.md) | Rules for Claude Code |
 
 ## Course material
 

@@ -1,6 +1,6 @@
 # Claude Code session prompts
 
-One session per block. Start each with plan mode (Shift+Tab twice), approve the plan, then let it build. Review every diff, run the tests yourself, commit, then close the session.
+One session per block. Follow the loop in WORKFLOW.md. Start each with plan mode (Shift+Tab twice), approve the plan, then let it build. Review every diff, run the tests yourself, commit, then close the session.
 
 ---
 
@@ -30,7 +30,7 @@ You: ingest the textbook, then open 5 random units and check the page numbers an
 
 > Implement `app/ingest/video.py`. Input: a local MP4 or a YouTube URL (download with yt-dlp). Transcribe with faster-whisper (model size from env WHISPER_MODEL, default "small") into segments with start/end times; also accept a precomputed segments JSON (from Colab) via `--segments`. Extract keyframes with ffmpeg scene detection (threshold 0.3, max one per 20 s) and describe each with the vision model. Merge into 60–90 s windows that do not split sentences; attach keyframe descriptions whose timestamps fall inside each window as figure_desc. Locator {"t_start": s, "t_end": s}.
 
-You: while ingestion runs, start eval/testset.json (see docs/TESTSET_FORMAT.md, written in session 5).
+You: while ingestion runs, start eval/testset.json (see docs/TESTSET_FORMAT.md).
 
 ---
 
@@ -38,7 +38,7 @@ You: while ingestion runs, start eval/testset.json (see docs/TESTSET_FORMAT.md, 
 
 **Session 5: concept graph and tagging**
 
-> Implement `app/kb/concepts.py` and `app/kb/tagging.py` per the build spec. Summarise units per source, then one LLM pass returns a JSON hierarchy (topic → subtopic → concept, 15–40 concepts) with prerequisite edges; validate it (no cycles, every concept has a parent topic). Tag each unit: embedding shortlist of 5 concepts, then the LLM picks 1–3 with confidence. Also write docs/TESTSET_FORMAT.md describing the eval test set JSON.
+> Implement `app/kb/concepts.py` and `app/kb/tagging.py` per the build spec. Summarise units per source, then one LLM pass returns a JSON hierarchy (topic → subtopic → concept, 15–40 concepts) with prerequisite edges; validate it (no cycles, every concept has a parent topic). Tag each unit: embedding shortlist of 5 concepts, then the LLM picks 1–3 with confidence. Then backfill `concept_ids` in eval/testset.json by matching gold locators to tagged units.
 
 **Session 6: retrieval + answer**
 
