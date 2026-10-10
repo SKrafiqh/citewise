@@ -31,7 +31,12 @@ uvicorn app.main:app --reload   # http://127.0.0.1:8000/health
 
 ## Course material
 
-To be listed with licenses once chosen.
+| Source | Content used | License |
+|---|---|---|
+| [MIT OCW 6.041 Probabilistic Systems Analysis (Fall 2010)](https://ocw.mit.edu/courses/6-041-probabilistic-systems-analysis-and-applied-probability-fall-2010/) | Lecture videos 1–3 and their slides | CC BY-NC-SA 4.0 |
+| [OpenStax Introductory Statistics 2e](https://openstax.org/details/books/introductory-statistics-2e) | Chapter 3, Probability Topics | CC BY 4.0 |
+
+Run `bash scripts/download_material.sh` to fetch the MIT material; the OpenStax PDF is downloaded by hand (instructions printed by the script).
 
 ## Related work
 

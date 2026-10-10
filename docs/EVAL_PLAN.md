@@ -34,8 +34,8 @@ Judge model: the OpenRouter model (a different provider from the generator), nam
 | Metric | How |
 |---|---|
 | Verification pass rate | From `questions.verify_log`, by question type |
-| Correctness | Hand audit of 30 random released questions (you, not a model) |
-| Tag accuracy | Same 30: is the concept tag and anchor location right? |
+| Correctness | Hand audit of 20 random released questions (you, not a model) |
+| Tag accuracy | Same 20: is the concept tag and anchor location right? |
 | Repetition rate | 5 consecutive assessments for one student: share of near-duplicates |
 
 ## C. Personalization (`eval/simulate.py`)
@@ -50,7 +50,7 @@ Judge model: the OpenRouter model (a different provider from the generator), nam
 | Fast learner | Higher T |
 | Forgetful | Higher forgetting rate |
 
-**Protocol:** 5 profiles × 20 seeds × 8 sessions × 10 questions. Same question bank for both policies.
+**Protocol:** 5 profiles × 10 seeds × 8 sessions × 10 questions. Same question bank for both policies.
 
 | Policy | Description |
 |---|---|

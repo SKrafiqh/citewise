@@ -6,7 +6,7 @@
 | Owner | Shaik Rafiqhuddin |
 | Context | Multimodal AI Hackathon 2026 (IIT Mandi), Track D: Personalized Tutoring & Adaptive Learning |
 | Status | In development · v0.1 · 7 Oct 2026 |
-| Deadline | Submit by Wed 14 Oct 2026, 11 PM IST (hard cutoff 15 Oct, 00:15 IST) |
+| Deadline | Submit by Wed 14 Oct 2026, 10 PM IST (hard cutoff 15 Oct, 00:15 IST) |
 | Related | [TRD.md](TRD.md) · [EVAL_PLAN.md](EVAL_PLAN.md) · [WORKFLOW.md](WORKFLOW.md) · [DECISIONS.md](DECISIONS.md) |
 
 ---
@@ -40,7 +40,7 @@ Targets are goals for the evaluation run, not promises. Report the real numbers 
 | Citations point to the right place | Citation accuracy (same page/slide, video within 30 s) | ≥ 80% |
 | Off-material questions are declined | Refusal recall on off-material set | ≥ 90% |
 | Retrieval finds the right evidence | RAGAS context recall · hit@5 | ≥ 0.80 · ≥ 85% |
-| Questions are correct | Hand audit of 30 released questions | ≥ 90% correct |
+| Questions are correct | Hand audit of 20 released questions | ≥ 90% correct |
 | No repeats | Repetition rate across 5 assessments | < 5% |
 | Personalization works | True mastery gain, adaptive vs random (simulated) | Adaptive higher, with seeds and spread reported |
 | Model learns the student | Mean abs. error, BKT estimate vs hidden truth | Falls across sessions |
@@ -49,7 +49,7 @@ Targets are goals for the evaluation run, not promises. Report the real numbers 
 
 ### In scope (v1, by 14 Oct)
 
-One course unit: 3–4 lecture videos, matching textbook chapters and slide decks, with open licenses.
+One course unit: MIT 6.041 lectures 1–3 (probability models, conditioning and Bayes' rule, independence) with their slides, and OpenStax *Introductory Statistics 2e* chapter 3, all openly licensed.
 
 ### Out of scope (v1)
 
@@ -112,7 +112,7 @@ Priority: **P0** = required by the hackathon statement, **P1** = scored optional
 | ID | Requirement | Priority | Acceptance criteria |
 |---|---|---|---|
 | EV-1 | Framework-based RAG evaluation | P0 | RAGAS faithfulness, answer relevancy, context precision, context recall reported |
-| EV-2 | Team-built test set | P0 | ~60 questions with gold locators, including ≥ 10 off-material (see TESTSET_FORMAT.md) |
+| EV-2 | Team-built test set | P0 | ~40 questions with gold locators, including ≥ 10 off-material (see TESTSET_FORMAT.md) |
 | EV-3 | Personalization evaluation | P0 | Simulated students across sessions; mastery gain and repetition rate reported vs a baseline |
 | EV-4 | Ablations and honest reporting | P1 | Retrieval and claim-check ablations; failures listed |
 
@@ -155,16 +155,15 @@ Priority: **P0** = required by the hackathon statement, **P1** = scored optional
 
 ## 10. Milestones
 
+Compressed after a 3-day slip (DECISIONS #10).
+
 | Date | Milestone |
 |---|---|
-| Wed 7 Oct | Setup verified; PDF ingestion working |
-| Thu 8 Oct | Slides + video ingestion; test set started |
-| Fri 9 Oct | Concept graph, tagging, grounded chat API |
-| Sat 10 Oct | Assessment generate/verify/grade/report |
-| Sun 11 Oct | Learner model + frontend + deploy |
-| Mon 12 Oct | Simulation + RAGAS evaluation |
-| Tue 13 Oct | Fixes, optional features, docs |
-| Wed 14 Oct | Demo video, submit |
+| Sat 10 Oct | Setup verified; textbook and slides ingested; BKT written |
+| Sun 11 Oct | Video ingested; concept graph; grounded chat API; question bank; test set at 40 |
+| Mon 12 Oct | Learner model; core frontend (chat + source viewer, quiz, report, dashboard) |
+| Tue 13 Oct | Library, intake, course map; deployed; simulation + RAGAS results |
+| Wed 14 Oct | Fixes, docs, demo video, submit by 10 PM |
 
 ## 11. Risks
 
@@ -179,6 +178,6 @@ Priority: **P0** = required by the hackathon statement, **P1** = scored optional
 
 ## 12. Open questions
 
-- [ ] Which course unit? (must have videos, slides with diagrams, textbook with figures and numericals, open license)
+- [x] Course unit: MIT 6.041 lectures 1–3 + slides, OpenStax Introductory Statistics 2e ch. 3 (DECISIONS #9)
 - [ ] Which OpenRouter model for verification (different provider from Gemini)?
 - [ ] Hosting for the API: Render or Railway?

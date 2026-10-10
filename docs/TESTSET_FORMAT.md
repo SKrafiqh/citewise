@@ -2,12 +2,12 @@
 
 The test set measures retrieval, grounding, citation accuracy and refusal. It is written by hand from the course material, and **every gold answer and locator is checked by a person** (PRD EV-2). Commit it to the repo.
 
-## Composition (~60 items)
+## Composition (~40 items)
 
 | Slice | `kind` | Count | Notes |
 |---|---|---|---|
-| In-material, one source | `single` | 40 | ~15 video, ~15 textbook, ~10 slides; at least 5 must need a figure or diagram to answer |
-| Multi-hop across sources | `multi_hop` | 10 | Needs evidence from two locations (e.g. textbook page + lecture moment) |
+| In-material, one source | `single` | 25 | ~9 video, ~9 textbook, ~7 slides; at least 5 must need a figure or diagram to answer |
+| Multi-hop across sources | `multi_hop` | 5 | Needs evidence from two locations (e.g. textbook page + lecture moment) |
 | Off-material | `off_material` | 10 | Plausible for the subject but not covered by the uploaded material; expected outcome is a decline |
 
 ## Item schema

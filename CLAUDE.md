@@ -1,6 +1,6 @@
 # CLAUDE.md — Track D: Grounded Adaptive Study Companion
 
-Multimodal AI Hackathon 2026 (IIT Mandi), Track D. Submission deadline: **Wed 14 Oct 2026, 11 PM IST** (hard cutoff 15 Oct 00:15).
+Multimodal AI Hackathon 2026 (IIT Mandi), Track D. Submission deadline: **Wed 14 Oct 2026, 10 PM IST target** (hard cutoff 15 Oct 00:15).
 
 ## What we are building
 

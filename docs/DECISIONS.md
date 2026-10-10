@@ -12,4 +12,6 @@ Short records of choices and why. Add one whenever you pick between options; jud
 | 6 | 7 Oct | Gemini for generation/vision/embeddings, OpenRouter second model for verification | Single provider | Cross-model validation needs an independent model (Req 3b) |
 | 7 | 7 Oct | 768-dim embeddings | 3072 | pgvector HNSW index limit and storage; quality adequate for one course |
 | 8 | 7 Oct | Disk cache on every LLM call | No cache | Free reruns, reproducible evaluation |
-| 9 | | Course unit: _TBD_ | | |
+| 9 | 10 Oct | Course unit: MIT 6.041 lectures 1–3 (probability models, conditioning and Bayes' rule, independence) + slides, with OpenStax *Introductory Statistics 2e* ch. 3 | Other subjects | Open licenses, real lecture videos with captions, slides with tree and Venn diagrams, textbook with figures and numericals; answers easy to verify by hand |
+| 10 | 10 Oct | Compressed scope after losing 3 days: test set 40, audit 20, simulation 10 seeds, optional features limited to course map + Hindi toggle | Original scope | Keeps every P0 requirement; cuts only volume and P1 extras |
+| 11 | 10 Oct | Video text from YouTube captions first, Whisper as fallback | Whisper only | Saves transcription time; same timestamped segments |
