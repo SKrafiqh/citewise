@@ -1,11 +1,16 @@
 """Second model via OpenRouter (OpenAI-compatible), used for cross-model checks."""
 from functools import lru_cache
+from typing import Any
 
 import httpx
 
 from app.config import get_settings
 from app.llm.cache import DiskCache
+from app.llm.http import TIMEOUT_S, ipv4_transport
+from app.llm.jsonutil import LLMOutputError, parse_json
+from app.llm.retry import RateGate, with_retry
 
+_gate = RateGate()
 OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions"
 
 
@@ -33,17 +38,30 @@ def verify_chat(
         "json_mode": json_mode,
     }
 
-    def call() -> str:
+    def post() -> str:
+        _gate.wait(settings.openrouter_max_rpm)
         body = {k: v for k, v in request.items() if k != "json_mode"}
         if json_mode:
             body["response_format"] = {"type": "json_object"}
-        response = httpx.post(
-            OPENROUTER_URL,
-            headers={"Authorization": f"Bearer {settings.openrouter_api_key}"},
-            json=body,
-            timeout=120,
-        )
+        with httpx.Client(transport=ipv4_transport(), timeout=TIMEOUT_S) as client:
+            response = client.post(OPENROUTER_URL, headers={"Authorization": f"Bearer {settings.openrouter_api_key}"}, json=body)
         response.raise_for_status()
-        return response.json()["choices"][0]["message"]["content"]
+        body = response.json()
+        try:
+            content = body["choices"][0]["message"]["content"]
+        except (KeyError, IndexError, TypeError) as exc:
+            raise LLMOutputError(f"OpenRouter returned no completion: {str(body.get('error', body))[:120]}") from exc
+        if not content:
+            raise LLMOutputError("OpenRouter returned an empty response")
+        return content
 
-    return _cache().get_or_call(request, call)
+    return _cache().get_or_call(request, lambda: with_retry(post))
+
+
+def verify_json(prompt: str, **kwargs: Any) -> Any:
+    """verify_chat in JSON mode, parsed; one repair re-prompt on bad JSON."""
+    try:
+        return parse_json(verify_chat(prompt, json_mode=True, **kwargs))
+    except LLMOutputError:
+        repair = f"{prompt}\n\nYour previous reply was not valid JSON. Reply with valid JSON only."
+        return parse_json(verify_chat(repair, json_mode=True, **kwargs))

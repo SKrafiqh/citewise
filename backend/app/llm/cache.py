@@ -5,6 +5,7 @@ evaluation results are reproducible.
 """
 import hashlib
 import json
+import uuid
 from collections.abc import Callable
 from pathlib import Path
 from typing import Any
@@ -32,7 +33,7 @@ class DiskCache:
     def put(self, key: str, request: dict[str, Any], response: Any) -> None:
         path = self._path(key)
         path.parent.mkdir(parents=True, exist_ok=True)
-        tmp = path.with_suffix(".tmp")
+        tmp = path.with_suffix(f".{uuid.uuid4().hex}.tmp")  # unique, so concurrent writers never collide
         tmp.write_text(
             json.dumps({"request": request, "response": response}, ensure_ascii=False),
             encoding="utf-8",

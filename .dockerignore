@@ -1,0 +1,11 @@
+.git
+.env
+.cache
+.venv
+**/__pycache__
+**/.DS_Store
+data/raw
+data/uploads
+web
+graphify-out
+eval/out

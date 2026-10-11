@@ -1,0 +1,69 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #f7f6f2;
+  --surface: #ffffff;
+  --soft: #eef2ef;
+  --line: #dcdad2;
+  --fg: #1d1c1a;
+  --muted: #5f5c55;
+  --accent: #2b6b5a;
+  --accent-fg: #ffffff;
+  --good: #2e7d32;
+  --warn: #a35f00;
+  --bad: #b3261e;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #131513;
+    --surface: #1c1f1c;
+    --soft: #242925;
+    --line: #363b36;
+    --fg: #ecebe6;
+    --muted: #a3a097;
+    --accent: #6fc3ab;
+    --accent-fg: #0d1a15;
+    --good: #7bc67f;
+    --warn: #e0a14a;
+    --bad: #f08a82;
+  }
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-soft: var(--soft);
+  --color-line: var(--line);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-fg: var(--accent-fg);
+  --color-good: var(--good);
+  --color-warn: var(--warn);
+  --color-bad: var(--bad);
+}
+
+html {
+  color-scheme: light dark;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans Devanagari", sans-serif;
+  line-height: 1.5;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}

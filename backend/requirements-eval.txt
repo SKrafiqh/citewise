@@ -1,0 +1,8 @@
+-r requirements.txt
+# ragas 0.2.15 does not import with langchain >= 1 / langchain-community >= 0.4, so those are pinned
+ragas==0.2.15
+langchain<1
+langchain-core<1
+langchain-community<0.4
+langchain-openai<1
+matplotlib>=3.8

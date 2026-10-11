@@ -1,0 +1,25 @@
+# Render blueprint for the API. Secrets (sync: false) are entered in the dashboard.
+services:
+  - type: web
+    name: study-companion-api
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    healthCheckPath: /health
+    envVars:
+      - key: DATABASE_URL
+        sync: false
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: OPENROUTER_API_KEY
+        sync: false
+      - key: ADMIN_TOKEN
+        sync: false
+      - key: CORS_ORIGINS        # e.g. https://your-app.vercel.app
+        sync: false
+      - key: GEMINI_MODEL
+        value: gemini-3.5-flash-lite
+      - key: OPENROUTER_MODEL
+        value: openai/gpt-4o-mini
+      - key: COVERAGE_THRESHOLD
+        value: "0.6"

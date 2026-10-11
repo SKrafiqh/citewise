@@ -1,10 +1,16 @@
 .env
 .cache/
 data/raw/
-data/derived/
+data/uploads/
+data/derived/*/figures/
+data/derived/*/keyframes/
 __pycache__/
 *.pyc
 .pytest_cache/
+.coverage
 .venv/
 node_modules/
 .next/
+.DS_Store
+graphify-out/
+eval/out/

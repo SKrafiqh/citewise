@@ -7,18 +7,21 @@ RAW="data/raw"
 mkdir -p "$RAW/videos" "$RAW/captions" "$RAW/slides" "$RAW/textbook"
 
 # MIT OCW 6.041 Fall 2010 (CC BY-NC-SA 4.0), lectures 1-3
-declare -A LECTURES=(
-  [lec01]="j9WZyLZCBzs"   # Probability Models and Axioms
-  [lec02]="TluTv5V0RmE"   # Conditioning and Bayes' Rule
-  [lec03]="19Ql_Q3l0GA"   # Independence
-)
+# (plain function instead of `declare -A`, which macOS's bash 3.2 does not support)
+lecture_id() {
+  case "$1" in
+    lec01) echo "j9WZyLZCBzs" ;;   # Probability Models and Axioms
+    lec02) echo "TluTv5V0RmE" ;;   # Conditioning and Bayes' Rule
+    lec03) echo "19Ql_Q3l0GA" ;;   # Independence
+  esac
+}
 
 echo "== Lecture slides (all lectures, one PDF) =="
 curl -fL -o "$RAW/slides/mit6041_lec_slides.pdf" \
   "https://ocw.mit.edu/courses/6-041-probabilistic-systems-analysis-and-applied-probability-fall-2010/60eede37f87fd886d4ba574e1cf26617_MIT6_041F10_lec_slides.pdf"
 
 for lec in lec01 lec02 lec03; do
-  id="${LECTURES[$lec]}"
+  id="$(lecture_id "$lec")"
   echo "== $lec video (archive.org mirror) =="
   curl -fL -o "$RAW/videos/$lec.mp4" \
     "https://archive.org/download/MIT6.041F10/MIT6_041F11_${lec}_300k.mp4" \
