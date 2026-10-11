@@ -1,6 +1,6 @@
 # TRD — Technical Design
 
-Implements [PRD.md](PRD.md). Schema source of truth: [`migrations/001_init.sql`](../migrations/001_init.sql). Rules for building: [`CLAUDE.md`](../CLAUDE.md).
+Implements [PRD.md](PRD.md). Schema source of truth: [`migrations/001_init.sql`](../../migrations/001_init.sql). Rules for building: [`CLAUDE.md`](../../CLAUDE.md).
 
 ---
 

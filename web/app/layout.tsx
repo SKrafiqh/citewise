@@ -3,7 +3,7 @@ import { AppShell } from "@/components/AppShell";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Grounded Study Companion",
+  title: "Citewise",
   description: "Source-cited tutoring, adaptive quizzes and a mastery map for your course.",
 };
 

@@ -1,4 +1,4 @@
-# Grounded Study Companion: web
+# Citewise: web
 
 Next.js (App Router) + Tailwind + React Flow. All data comes from the FastAPI backend.
 

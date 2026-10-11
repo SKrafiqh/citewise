@@ -1,4 +1,4 @@
-# Build from the repository root:  docker build -t study-companion .
+# Build from the repository root:  docker build -t citewise .
 FROM python:3.12-slim
 
 ENV PYTHONUNBUFFERED=1 PIP_NO_CACHE_DIR=1

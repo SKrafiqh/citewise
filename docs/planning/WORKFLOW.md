@@ -7,12 +7,12 @@ How work moves from the PRD to a committed, tested module. One loop per module, 
 | File | Read when |
 |---|---|
 | `CLAUDE.md` | Claude Code reads it automatically every session; the rules |
-| `docs/PRD.md` | What to build and how we know it works (requirement IDs) |
-| `docs/TRD.md` | How each part is built; API contract |
-| `docs/SESSION_PROMPTS.md` | The exact prompt for each session, in order |
-| `docs/EVAL_PLAN.md` | What gets measured and how |
-| `docs/TESTSET_FORMAT.md` | Writing `eval/testset.json` |
-| `docs/DECISIONS.md` | Why we chose X over Y (append as you go) |
+| `docs/planning/PRD.md` | What to build and how we know it works (requirement IDs) |
+| `docs/planning/TRD.md` | How each part is built; API contract |
+| `docs/planning/SESSION_PROMPTS.md` | The exact prompt for each session, in order |
+| `docs/planning/EVAL_PLAN.md` | What gets measured and how |
+| `docs/planning/TESTSET_FORMAT.md` | Writing `eval/testset.json` |
+| `docs/planning/DECISIONS.md` | Why we chose X over Y (append as you go) |
 | `docs/architecture.md`, `grounding.md`, `learner_model.md`, `results.md` | Final deliverable docs, filled on Tue 13 Oct |
 
 ## The module loop
@@ -74,7 +74,7 @@ Sunday 11 Oct is the one full day: learner model + frontend.
 
 ## Claude Code habits
 
-- Start every session with: "Read CLAUDE.md and docs/TRD.md section X before planning."
+- Start every session with: "Read CLAUDE.md and docs/planning/TRD.md section X before planning."
 - Use plan mode for anything touching more than one file.
 - When context gets long, finish the module, commit, and start a fresh session rather than continuing.
 - Use `/code-review` (ECC) after each module if installed.

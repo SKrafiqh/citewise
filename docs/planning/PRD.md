@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| Product | Grounded Study Companion (working name) |
+| Product | Citewise |
 | Owner | Shaik Rafiqhuddin |
 | Context | Multimodal AI Hackathon 2026 (IIT Mandi), Track D: Personalized Tutoring & Adaptive Learning |
 | Status | In development · v0.1 · 7 Oct 2026 |

@@ -23,7 +23,7 @@ export function AppShell({ children }: { children: ReactNode }) {
     <>
       <header className="border-b border-line bg-surface">
         <div className="mx-auto flex max-w-6xl flex-wrap items-center gap-x-6 gap-y-1 px-4 py-2">
-          <span className="font-semibold">Study Companion</span>
+          <span className="font-semibold">Citewise</span>
           <nav aria-label="Main" className="flex flex-wrap gap-1">
             {LINKS.map((l) => {
               const active = l.href === "/" ? pathname === "/" : pathname.startsWith(l.href);

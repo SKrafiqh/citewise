@@ -10,10 +10,10 @@ Judging weights: grounding 20%, personalization 20%, assessment 15%, UX/demo 15%
 
 ## Read before planning
 
-- `docs/PRD.md`: requirements with IDs (KB-, GR-, AS-, LM-, EV-, OP-) and acceptance criteria
-- `docs/TRD.md`: module design, pipelines, API contract
-- `docs/WORKFLOW.md`: the plan → build → review → run → verify → commit loop
-- `docs/EVAL_PLAN.md`, `docs/TESTSET_FORMAT.md`: evaluation
+- `docs/planning/PRD.md`: requirements with IDs (KB-, GR-, AS-, LM-, EV-, OP-) and acceptance criteria
+- `docs/planning/TRD.md`: module design, pipelines, API contract
+- `docs/planning/WORKFLOW.md`: the plan → build → review → run → verify → commit loop
+- `docs/planning/EVAL_PLAN.md`, `docs/planning/TESTSET_FORMAT.md`: evaluation
 
 Reference PRD requirement IDs in plans and commit messages.
 

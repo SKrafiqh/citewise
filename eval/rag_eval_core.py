@@ -32,7 +32,7 @@ def load_testset(path: Path, require_checked: bool = True) -> list[Item]:
         raise ValueError("duplicate item ids in the test set")
     for i in items:
         if (i.expected == "decline") != (i.kind == "off_material") or bool(i.gold) == (i.kind == "off_material"):
-            raise ValueError(f"{i.id}: kind, expected and gold are inconsistent (see docs/TESTSET_FORMAT.md)")
+            raise ValueError(f"{i.id}: kind, expected and gold are inconsistent (see docs/planning/TESTSET_FORMAT.md)")
     unchecked = [i.id for i in items if not i.author_checked]
     if require_checked and unchecked:
         raise ValueError(f"items not hand-checked (author_checked=false): {unchecked}")

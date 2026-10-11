@@ -108,7 +108,7 @@ def main() -> None:
     args = parser.parse_args()
     items = load_testset(args.testset, require_checked=not args.allow_unchecked)
     if not items:
-        raise SystemExit("eval/testset.json is empty; write items per docs/TESTSET_FORMAT.md first")
+        raise SystemExit("eval/testset.json is empty; write items per docs/planning/TESTSET_FORMAT.md first")
     OUT.mkdir(exist_ok=True)
     if args.tune_gate:
         print(json.dumps(tune_gate(items, args.seed), indent=2))

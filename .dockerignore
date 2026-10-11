@@ -9,3 +9,4 @@ data/uploads
 web
 graphify-out
 eval/out
+.ruff_cache

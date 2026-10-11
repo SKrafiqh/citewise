@@ -31,7 +31,7 @@ def _error(status: int, message: str) -> JSONResponse:
 
 def create_app() -> FastAPI:
     settings = get_settings()
-    app = FastAPI(title="Grounded Study Companion", version="0.1.0", lifespan=lifespan)
+    app = FastAPI(title="Citewise", version="0.1.0", lifespan=lifespan)
     app.add_middleware(
         CORSMiddleware,
         allow_origins=settings.cors_origin_list,

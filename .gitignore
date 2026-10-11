@@ -14,3 +14,4 @@ node_modules/
 .DS_Store
 graphify-out/
 eval/out/
+.ruff_cache/

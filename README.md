@@ -1,4 +1,6 @@
-# Grounded Study Companion
+# Citewise
+
+**A study companion that only teaches from your course material and cites every answer.**
 
 An AI study companion that turns lecture videos, a textbook and slide decks into a source-cited knowledge base, then tutors students and runs verified adaptive quizzes driven by a Bayesian Knowledge Tracing learner model. Every answer and question links to the exact page, slide or video second it came from.
 
@@ -53,7 +55,7 @@ The same ingestion is available in the web app's **Library** page (PDF/PPTX uplo
 | Item | Why |
 |---|---|
 | Implement `backend/app/learner/bkt.py`, `backend/app/assess/dedup.py`, `eval/metrics.py` | Reserved for the project owner (CLAUDE.md rule 6). Tests are in `backend/tests/`. Until they exist, quizzes, answers, the question bank, the simulation and citation accuracy return HTTP 501 / raise `NotImplementedError`. |
-| Write `eval/testset.json` (~40 hand-checked items) | Gold locators must be verified by a person ([docs/TESTSET_FORMAT.md](docs/TESTSET_FORMAT.md)). |
+| Write `eval/testset.json` (~40 hand-checked items) | Gold locators must be verified by a person ([docs/planning/TESTSET_FORMAT.md](docs/planning/TESTSET_FORMAT.md)). |
 | Hand-audit 20 released questions | Correctness is judged by you, not a model. |
 
 ## Evaluate
@@ -73,6 +75,31 @@ Copy the generated tables into [docs/results.md](docs/results.md); do not edit n
 - **Web (Vercel):** project root `web/`, env `NEXT_PUBLIC_API_URL` = the API URL.
 - Local database for tests: any Postgres with pgvector, e.g. `docker run -d -p 54329:5432 -e POSTGRES_PASSWORD=x -e POSTGRES_DB=tutor pgvector/pgvector:pg17`, apply the migrations, then `TEST_DATABASE_URL=postgresql://postgres:x@localhost:54329/tutor pytest`.
 
+## Project structure
+
+```
+backend/            FastAPI service
+  app/
+    api/            HTTP routers (library, tutor, learning)
+    llm/            every LLM call: Gemini, OpenRouter, disk cache, retry
+    ingest/         PDF, slide and video ingestion -> units with locators
+    kb/             concept graph and unit tagging
+    qa/             retrieval, coverage gate, cited answers, claim check
+    assess/         question generation, verification, grading, reports
+    learner/        BKT mastery, review scheduling, diagnostic, policy
+    tutor/          tutor check questions
+  scripts/          check_setup.py (verifies keys, models and DB)
+  tests/            pytest suite
+web/                Next.js app (chat + source viewer, quizzes, dashboard, course map)
+eval/               test set, RAG evaluation, simulated students, metrics
+migrations/         SQL schema, applied in order
+prompts/            versioned prompt templates
+scripts/            download course material, ingest everything
+data/derived/       rendered page and slide images served by the API
+docs/               architecture, grounding, learner model, results
+  planning/         PRD, TRD, decisions, eval plan, workflow
+```
+
 ## Documentation
 
 | Doc | Purpose |
@@ -81,9 +108,9 @@ Copy the generated tables into [docs/results.md](docs/results.md); do not edit n
 | [docs/grounding.md](docs/grounding.md) | Retrieval, gate, citations, claim check |
 | [docs/learner_model.md](docs/learner_model.md) | BKT, review, cold start, policy |
 | [docs/results.md](docs/results.md) | Evaluation protocol and results (honest status) |
-| [docs/PRD.md](docs/PRD.md), [docs/TRD.md](docs/TRD.md) | Requirements and original design |
-| [docs/DECISIONS.md](docs/DECISIONS.md) | Why we chose X over Y (incl. deviations from the TRD) |
-| [docs/EVAL_PLAN.md](docs/EVAL_PLAN.md), [docs/TESTSET_FORMAT.md](docs/TESTSET_FORMAT.md) | Evaluation protocol and test-set format |
+| [docs/planning/PRD.md](docs/planning/PRD.md), [docs/planning/TRD.md](docs/planning/TRD.md) | Requirements and original design |
+| [docs/planning/DECISIONS.md](docs/planning/DECISIONS.md) | Why we chose X over Y (incl. deviations from the TRD) |
+| [docs/planning/EVAL_PLAN.md](docs/planning/EVAL_PLAN.md), [docs/planning/TESTSET_FORMAT.md](docs/planning/TESTSET_FORMAT.md) | Evaluation protocol and test-set format |
 
 ## Security notes
 
